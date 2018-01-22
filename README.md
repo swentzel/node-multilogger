@@ -12,7 +12,7 @@ This boilerplate is for people who want write code using all ES6 features ( and 
 * Test with [mocha](https://mochajs.org).
 * Cover with [istanbul](https://github.com/gotwarlost/istanbul).
 * Check with [eslint](eslint.org).
-* Deploy with [Travis](travis-ci.org).
+* Deploy with [Travis](https://travis-ci.org/profile/swentzel).
 
 # Commands
 - `npm run clean` - Remove `lib/` directory
