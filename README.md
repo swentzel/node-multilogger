@@ -1,8 +1,8 @@
 # node-multilogger
 Module to create and use multiple logstreams and formats like console / winston / loggly.
 
-[![Build Status (Master)](https://travis-ci.org/swentzel/node-multilogger.svg?branch=master)](https://travis-ci.org/swentzel/node-multilogger)
-[![Build Status (Develop)](https://travis-ci.org/swentzel/node-multilogger.svg?branch=develop)](https://travis-ci.org/swentzel/node-multilogger)
+Build Status master: [![Build Status (Master)](https://travis-ci.org/swentzel/node-multilogger.svg?branch=master)](https://travis-ci.org/swentzel/node-multilogger)
+Build Status develop: [![Build Status (Develop)](https://travis-ci.org/swentzel/node-multilogger.svg?branch=develop)](https://travis-ci.org/swentzel/node-multilogger)
 
 # Why?
 :page_with_curl: Boilerplate for npm/node module. Write with ES6 - have compatibility with all node versions.

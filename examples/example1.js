@@ -1,4 +1,13 @@
-var awesomeFunction = require('../lib/awesomeModule');
+let Multilogger = require('../lib/MultiloggerModule');
 
-var k = awesomeFunction(1, 2);
-console.log(k); // k === 3
+// create Multilogger 
+let logger = new Multilogger();
+
+// run logging on default channel (console) for all levels
+logger.log('Multilogger created for testing');
+logger.trace('Multilogger message on level TRACE');
+logger.debug('Multilogger message on level DEBUG');
+logger.info('Multilogger message on level INFO');
+logger.warn('Multilogger message on level WARN');
+logger.error('Multilogger message on level ERROR');
+
