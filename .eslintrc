@@ -6,6 +6,11 @@
   },
   "rules": {
     // usage of console should be allowed
-    no-console: 0
+    no-console: 0,
+    // allow trailing spaces in blank lines
+    no-trailing-spaces: 0,
+    // max length for one code row
+    max-len: ["error", { "code": 200 }],
+    no-plusplus: ["error", { "allowForLoopAfterthoughts": true }]
   }
 }
