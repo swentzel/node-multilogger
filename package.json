@@ -1,7 +1,7 @@
 {
-  "name": "npm-module-boilerplate-es6",
-  "version": "1.0.0",
-  "description": "Boilerplate for npm modules.",
+  "name": "node-multilogger",
+  "version": "0.0.1",
+  "description": "Node multilogger",
   "main": "./lib/index.js",
   "scripts": {
     "clean": "rimraf lib",
@@ -19,21 +19,20 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Travelport-Ukraine/npm-module-boilerplate.git"
+    "url": "git+https://github.com/swentzel/node-multilogger.git"
   },
   "keywords": [
-    "boilerplate",
     "npm",
     "module",
     "node",
     "javascript"
   ],
-  "author": "Mark mail.ormark@gmail.com",
+  "author": "steffen.wentzel@gmail.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Travelport-Ukraine/npm-module-boilerplate/issues"
+    "url": "https://github.com/swentzel/node-multilogger/issues"
   },
-  "homepage": "https://github.com/Travelport-Ukraine/npm-module-boilerplate#readme",
+  "homepage": "https://github.com/swentzel/node-multilogger#readme",
   "devDependencies": {
     "babel": "^6.5.2",
     "babel-cli": "^6.14.0",

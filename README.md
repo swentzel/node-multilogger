@@ -1,8 +1,10 @@
 # node-multilogger
 Module to create and use multiple logstreams and formats like console / winston / loggly.
 
+[![Build Status (Master)](https://travis-ci.org/swentzel/node-multilogger.svg?branch=master)](https://travis-ci.org/swentzel/node-multilogger)
+[![Build Status (Develop)](https://travis-ci.org/swentzel/node-multilogger.svg?branch=develop)](https://travis-ci.org/swentzel/node-multilogger)
 
-# Why? [![Build Status](https://travis-ci.org/Travelport-Ukraine/npm-module-boilerplate.svg?branch=master)](https://travis-ci.org/Travelport-Ukraine/npm-module-boilerplate)
+# Why?
 :page_with_curl: Boilerplate for npm/node module. Write with ES6 - have compatibility with all node versions.
 
 This boilerplate is for people who want write code using all ES6 features ( and stage-2 ) but also want/need backwards compatibility with old node versions. 
