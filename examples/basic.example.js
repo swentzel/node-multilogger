@@ -11,3 +11,9 @@ logger.info('Multilogger message on level INFO');
 logger.warn('Multilogger message on level WARN');
 logger.error('Multilogger message on level ERROR');
 
+// log Array
+logger.info(['Volvo', 'Chrysler', 'Seat']);
+
+// log Object
+logger.info({ fruits: ['Apple', 'Banana', 'Berry'], vegetables: ['Tomato', 'Beans']});
+

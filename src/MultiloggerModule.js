@@ -1,5 +1,5 @@
-import LogChannelConsole from '../src/LogChannelConsole';
-import LogEvent from '../src/LogEvent';
+import LogChannelConsole from './LogChannelConsole';
+import LogEvent from './LogEvent';
 
 /**
  * Use ES6 export syntax
@@ -7,12 +7,21 @@ import LogEvent from '../src/LogEvent';
  */
 
 export default class Multilogger {
-  constructor() {
+  constructor(params) {
     this.name = 'MultiloggerModule';
+    
+    // configure logger
+    if (typeof params === 'object' && params !== null) {
+      this.verbose = params.verbose;
+    } else {
+      this.verbose = false;
+    }
     
     // create channels
     this.channels = [];
-    this.addChannel(new LogChannelConsole());
+    this.addChannel(new LogChannelConsole(params));
+    
+    
   }
   
   /**
