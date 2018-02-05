@@ -1,8 +1,9 @@
 import { assert } from 'chai';
-import awesomeFunction from '../src/awesomeModule';
+import Multilogger from '../src/multiloggerModule';
 
-describe('Awesome test.', () => {
-  it('should test awesome function', () => {
-    assert(awesomeFunction(1, 1) === 2, 'Not awesome :(');
+describe('Basic test of Multilogger Module.', () => {
+  it('MultiloggerModule should be available', () => {
+    let logger = new Multilogger();
+    assert(logger.name, 'MultiloggerModule');
   });
 });

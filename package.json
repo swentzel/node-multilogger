@@ -2,7 +2,7 @@
   "name": "node-multilogger",
   "version": "0.0.1",
   "description": "Node multilogger",
-  "main": "./lib/index.js",
+  "main": "./lib/multiloggerModule.js",
   "scripts": {
     "clean": "rimraf lib",
     "test": "cross-env BABEL_ENV=commonjs mocha --compilers js:babel-register --recursive",
