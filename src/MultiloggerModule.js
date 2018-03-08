@@ -33,6 +33,23 @@ export default class Multilogger {
   }
   
   /**
+   * hasChannel
+   * @params { string } channelName - Name of the channel
+   * @return { boolean } Return true, if channel is attached to Multilogger
+   */
+  hasChannel(channelName) {
+    let hasChannel = false;
+    // check name of all channels
+    for (let i = 0; i < this.channels.length; i++) {
+      if(this.channels[i].name === channelName) {
+        hasChannel = true;
+      }   
+    }
+    
+    return hasChannel;
+  }
+  
+  /**
    * log
    * 
    */
@@ -94,6 +111,7 @@ export default class Multilogger {
    * writeLogEvent
    */
   writeLogEvent(event) {
+    // write event into every channel
     for (let i = 0; i < this.channels.length; i++) {
       this.channels[i].writeLogEvent(event);   
     }

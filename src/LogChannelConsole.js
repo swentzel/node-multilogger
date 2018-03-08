@@ -50,7 +50,7 @@ export default class LogChannelConsole {
    * writeLogEvent
    */
   writeLogEvent(event) {
-    const label = `[${event.level}]`;
+    const label = `[CONSOLE][${event.level}]`;
     const message = ` ${event.message}`;
     
     if (event.level === 'TRACE') {

@@ -1,8 +1,13 @@
+'use strict';
+
+const axios = require('axios');
+
 
 
 export default class LogChannelLoggly {
   constructor(params) {
     this.name = 'LogChannelLoggly';
+    this.isInitialized = false;
     
     // configure channel
     if (typeof params === 'object' && params !== null) {
@@ -11,7 +16,11 @@ export default class LogChannelLoggly {
       this.verbose = false;
     }
     
-    
+    // Loggly API-Key
+    if(typeof process.env.LOGGLY_TOKEN === 'string') {
+      this.logglyToken = process.env.LOGGLY_TOKEN;
+      this.isInitialized = true;
+    }
     
   }
   
@@ -20,20 +29,19 @@ export default class LogChannelLoggly {
    * writeLogEvent
    */
   writeLogEvent(event) {
-    const label = `[${event.level}]`;
+    const label = `[LOGGLY][${event.level}]`;
     const message = ` ${event.message}`;
     
-    if (event.level === 'TRACE') {
-      console.log(this.consoleColors.bgWhite + label + this.consoleColors.reset + message);  
-    } else if (event.level === 'DEBUG') {
-      console.log(this.consoleColors.fgCyan + label + this.consoleColors.reset + message);
-    } else if (event.level === 'WARN') {
-      console.log(this.consoleColors.fgRed + label + this.consoleColors.reset + message);
-    } else if (event.level === 'ERROR') {
-      console.log(this.consoleColors.fgWhite + this.consoleColors.bgRed + label + this.consoleColors.reset + message);
-    } else {
-      // default, goes also for INFO
-      console.log(this.consoleColors.fgYellow + label + this.consoleColors.reset + message);
-    }
+    // Performing a POST request
+    let postRequest = axios.post(`http://logs-01.loggly.com/inputs/${this.logglyToken}/tag/http/`, { label: label, message: message });
+    postRequest.then(function(response){
+        console.log('axios call successful');
+        console.log(response);
+      });
+    postRequest.catch(function (error) {
+        console.log(error);
+    });
+    
+    return postRequest;
   }
 }

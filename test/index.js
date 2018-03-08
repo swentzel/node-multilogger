@@ -1,3 +1,6 @@
+require("babel-core/register");
+require("babel-polyfill");
+
 import { assert } from 'chai';
 import Multilogger from '../src/MultiloggerModule';
 import LogChannelConsole from '../src/LogChannelConsole';
@@ -5,7 +8,7 @@ import LogEvent from '../src/LogEvent';
 
 
 // create test data
-let strMessage = 'Plain string log message';
+let strMessage = 'Test plain string log message';
 let objMessage = {
   'someKey': 'here is some value',
   'fruits': ['Appel', 'Banana', 'Berry']
@@ -65,3 +68,8 @@ describe('Basic test of Multilogger Module.', () => {
   });
   
 });
+
+
+
+// test LogChannelLoggly
+require('./LogChannelLoggly.test');
