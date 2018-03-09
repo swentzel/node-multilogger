@@ -53,67 +53,68 @@ export default class Multilogger {
    * log
    * 
    */
-  log(data) {
-    return this.info(data);
+  async log(data) {
+    return await this.info(data);
   }
   
   /**
    * trace
    * 
    */
-  trace(data) {
+  async trace(data) {
     const event = new LogEvent({ level: 'TRACE', data });
-    this.writeLogEvent(event);
-    return event;
+    
+    return await this.writeLogEvent(event);
   }
   
   /**
    * debug
    * 
    */
-  debug(data) {
+  async debug(data) {
     const event = new LogEvent({ level: 'DEBUG', data });
-    this.writeLogEvent(event);
-    return event;
+    
+    return await this.writeLogEvent(event);
   }
   
   /**
    * info
    * 
    */
-  info(data) {
+  async info(data) {
     const event = new LogEvent({ level: 'INFO', data });
-    this.writeLogEvent(event);
-    return event;
+
+    return await this.writeLogEvent(event);
   }
   
   /**
    * warn
    * 
    */
-  warn(data) {
+  async warn(data) {
     const event = new LogEvent({ level: 'WARN', data });
-    this.writeLogEvent(event);
-    return event;
+    
+    return await this.writeLogEvent(event);
   }
   
   /**
    * error
    * 
    */
-  error(data) {
+  async error(data) {
     const event = new LogEvent({ level: 'ERROR', data });
-    this.writeLogEvent(event);
-    return event;
+    return await this.writeLogEvent(event);
   }
   
   /**
    * writeLogEvent
    */
-  writeLogEvent(event) {
+  async writeLogEvent(event) {
+    let result = "OK";
     // write event into every channel
     for (let i = 0; i < this.channels.length; i++) {
-      this.channels[i].writeLogEvent(event);   
+      result = await this.channels[i].writeLogEvent(event);   
     }
+    return result;
   }
 }

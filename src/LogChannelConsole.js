@@ -65,5 +65,7 @@ export default class LogChannelConsole {
       // default, goes also for INFO
       console.log(this.consoleColors.fgYellow + label + this.consoleColors.reset + message);
     }
+    
+    return "OK";
   }
 }

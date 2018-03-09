@@ -1,13 +1,11 @@
 'use strict';
-
 const axios = require('axios');
-
-
 
 export default class LogChannelLoggly {
   constructor(params) {
     this.name = 'LogChannelLoggly';
     this.isInitialized = false;
+    this.process = {};
     
     // configure channel
     if (typeof params === 'object' && params !== null) {
@@ -22,26 +20,45 @@ export default class LogChannelLoggly {
       this.isInitialized = true;
     }
     
+    this.getProcessInfo();
+    
   }
   
   
   /**
    * writeLogEvent
    */
-  writeLogEvent(event) {
-    const label = `[LOGGLY][${event.level}]`;
+  async writeLogEvent(event) {
+    const label = `[${event.level}]`;
     const message = ` ${event.message}`;
     
     // Performing a POST request
-    let postRequest = axios.post(`http://logs-01.loggly.com/inputs/${this.logglyToken}/tag/http/`, { label: label, message: message });
-    postRequest.then(function(response){
-        console.log('axios call successful');
-        console.log(response);
-      });
-    postRequest.catch(function (error) {
-        console.log(error);
-    });
+    let postRequest = await axios.post(`http://logs-01.loggly.com/inputs/${this.logglyToken}/tag/http/`, { label: label, message: message, process: this.process });
     
-    return postRequest;
+    if(postRequest.status === 200) {
+      return 'OK';
+    } else {
+      return postRequest.status;  
+    }
+  }
+  
+  /**
+   * getProcessInfo()
+   */
+  getProcessInfo() {
+    let hostname = process.env.HOSTNAME;
+    let port = process.env.PORT;
+    let user = process.env.USER;
+    let pwd = process.env.PWD;
+    let lang = process.env.LANG;
+    
+    
+    this.process = {
+      hostname: hostname,
+      port: port,
+      user: user,
+      pwd: pwd,
+      lang: lang
+    }
   }
 }

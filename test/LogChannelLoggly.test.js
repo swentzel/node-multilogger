@@ -1,7 +1,9 @@
 'use strict';
-
+// babel-polyfill is needed to use ES6 syntax like async / await
+import 'babel-polyfill';
 import { assert } from 'chai';
-const expect = require('chai').expect
+const expect = require('chai').expect;
+const axios = require('axios');
 
 import Multilogger from '../src/MultiloggerModule';
 import LogChannelConsole from '../src/LogChannelConsole';
@@ -43,8 +45,12 @@ describe(`${desc} class basics`, () => {
 
 describe(`${desc} send log events to Loggly`, () => {
     
-    it('send a basic log event to Loggly', () => {
-        logger.log('Multilogger created for testing channel logChannelLoggly');
-        // assert(logger.name, 'MultiloggerModule');
+    it('send a basic log event to Loggly', async () => {
+        let result = await logger.log('Log some data for testing channel logChannelLoggly with await');
+        expect(result).to.equal('OK');
     });
+    
+    
 });
+
+
