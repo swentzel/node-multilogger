@@ -1,4 +1,4 @@
-'use strict';
+
 const axios = require('axios');
 
 export default class LogChannelLoggly {
@@ -15,13 +15,12 @@ export default class LogChannelLoggly {
     }
     
     // Loggly API-Key
-    if(typeof process.env.LOGGLY_TOKEN === 'string') {
+    if (typeof process.env.LOGGLY_TOKEN === 'string') {
       this.logglyToken = process.env.LOGGLY_TOKEN;
       this.isInitialized = true;
     }
     
     this.getProcessInfo();
-    
   }
   
   
@@ -31,26 +30,29 @@ export default class LogChannelLoggly {
   async writeLogEvent(event) {
     const label = `[${event.level}]`;
     const message = ` ${event.message}`;
+    let returnStatus = 'NOK';
     
     // Performing a POST request
-    let postRequest = await axios.post(`http://logs-01.loggly.com/inputs/${this.logglyToken}/tag/http/`, { label: label, message: message, process: this.process });
+    const postRequest = await axios.post(`http://logs-01.loggly.com/inputs/${this.logglyToken}/tag/http/`, { label: label, message: message, process: this.process });
     
-    if(postRequest.status === 200) {
-      return 'OK';
+    if (postRequest.status === 200) {
+      returnStatus = 'OK';
     } else {
-      return postRequest.status;  
+      returnStatus = postRequest.status;  
     }
+    
+    return returnStatus;
   }
   
   /**
    * getProcessInfo()
    */
   getProcessInfo() {
-    let hostname = process.env.HOSTNAME;
-    let port = process.env.PORT;
-    let user = process.env.USER;
-    let pwd = process.env.PWD;
-    let lang = process.env.LANG;
+    const hostname = process.env.HOSTNAME;
+    const port = process.env.PORT;
+    const user = process.env.USER;
+    const pwd = process.env.PWD;
+    const lang = process.env.LANG;
     
     
     this.process = {
@@ -58,7 +60,7 @@ export default class LogChannelLoggly {
       port: port,
       user: user,
       pwd: pwd,
-      lang: lang
-    }
+      lang: lang,
+    };
   }
 }

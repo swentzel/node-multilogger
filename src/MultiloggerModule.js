@@ -20,8 +20,6 @@ export default class Multilogger {
     // create channels
     this.channels = [];
     this.addChannel(new LogChannelConsole(params));
-    
-    
   }
   
   /**
@@ -41,7 +39,7 @@ export default class Multilogger {
     let hasChannel = false;
     // check name of all channels
     for (let i = 0; i < this.channels.length; i++) {
-      if(this.channels[i].name === channelName) {
+      if (this.channels[i].name === channelName) {
         hasChannel = true;
       }   
     }
@@ -62,7 +60,7 @@ export default class Multilogger {
    * 
    */
   async trace(data) {
-    const event = new LogEvent({ level: 'TRACE', data });
+    const event = new LogEvent({ level: 'TRACE', data: data });
     
     return await this.writeLogEvent(event);
   }
@@ -72,7 +70,7 @@ export default class Multilogger {
    * 
    */
   async debug(data) {
-    const event = new LogEvent({ level: 'DEBUG', data });
+    const event = new LogEvent({ level: 'DEBUG', data: data });
     
     return await this.writeLogEvent(event);
   }
@@ -82,7 +80,7 @@ export default class Multilogger {
    * 
    */
   async info(data) {
-    const event = new LogEvent({ level: 'INFO', data });
+    const event = new LogEvent({ level: 'INFO', data: data });
 
     return await this.writeLogEvent(event);
   }
@@ -92,7 +90,7 @@ export default class Multilogger {
    * 
    */
   async warn(data) {
-    const event = new LogEvent({ level: 'WARN', data });
+    const event = new LogEvent({ level: 'WARN', data: data });
     
     return await this.writeLogEvent(event);
   }
@@ -102,7 +100,7 @@ export default class Multilogger {
    * 
    */
   async error(data) {
-    const event = new LogEvent({ level: 'ERROR', data });
+    const event = new LogEvent({ level: 'ERROR', data: data });
     return await this.writeLogEvent(event);
   }
   
@@ -110,7 +108,7 @@ export default class Multilogger {
    * writeLogEvent
    */
   async writeLogEvent(event) {
-    let result = "OK";
+    let result = 'OK';
     // write event into every channel
     for (let i = 0; i < this.channels.length; i++) {
       result = await this.channels[i].writeLogEvent(event);   

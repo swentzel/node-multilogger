@@ -15,7 +15,6 @@ export default class LogChannelConsole {
     }
     
     
-    
     this.consoleColors = {
       reset: '\x1b[0m',
       bright: '\x1b[1m',
@@ -66,6 +65,6 @@ export default class LogChannelConsole {
       console.log(this.consoleColors.fgYellow + label + this.consoleColors.reset + message);
     }
     
-    return "OK";
+    return 'OK';
   }
 }
